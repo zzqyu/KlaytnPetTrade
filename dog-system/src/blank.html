@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script src="index.js"></script>
+
+  <!-- Core plugin CSS-->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/> 
+
+
+  <link rel="stylesheet" href="sb-admin-2.min.css"/> 
+
+
+  <title>반려견 거래 시스템</title>
+
+  <!-- Custom fonts for this template-->
+  
+        
+        <style>
+          td.details-control {
+            background: url('/static/details_open.png') no-repeat center center;
+            cursor: pointer;
+          }
+          tr.shown td.details-control {
+              background: url('/static/details_close.png') no-repeat center center;
+          }
+        </style>
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link rel="icon" type="image/png" href="http://example.com/myicon.png">
+
+  
+
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="blank.html">
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">반려견 시스템</div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+      <!-- Heading -->
+      <div class="sidebar-heading">
+          거래
+          <a class="btn btn-block btn-dark btn-user" href="blank.html">
+              구매
+            </a>
+          <a class="btn btn-block btn-light btn-user" href="blank2.html">
+              판매
+            </a>
+          <a class="btn btn-block btn-light btn-user" href="blank3.html">
+              거래 내역
+            </a>
+        </div>
+        
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+            <!-- Nav Item - User Information -->
+            <div id="myBalance"></div>
+            <div class="topbar-divider d-none d-sm-block"></div>
+            <div id="keyName"></div>
+            <div class="topbar-divider d-none d-sm-block"></div>
+            <div>
+              <button type="button"
+                    class="btn btn-info pull-right"
+                    id="logout"
+                    
+                    onclick="App.handleLogout()">
+                    로그아웃
+            </button>
+             </div>
+          </ul>
+        </nav>
+        <!-- End of Topbar -->
+
+        <!-- Page Heading -->
+        <div class="container-fluid">
+          <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">판매중인 강아지 목록</h6>
+              </div>
+              <div class="card-body">
+                  <table id="pet-table" data-name="buy" class="stripe hover order-column row-border" style="width:100%">
+                      <thead>
+                          <tr>
+                            <th class="detailsBtn"></th>
+                            <th>이름</th>
+                            <th>견종</th>
+                            <th>생년월일</th>
+                            <th>성별</th>
+                            <th>무게</th>
+                            <th class='sellBtn'>판매 가격</th>
+                            <th class='petId'>펫 ID</th>
+                          </tr>
+                      </thead>
+                  </table>
+              </div>
+            </div>
+        
+        </div>
+      </div>
+      <!-- End of Main Content -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="login.html">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Buy Modal -->
+  <div class="modal" id="buyModal" tabindex="-1" role="dialog" aria-labelledby="cancelModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form role="form">
+            <div class="form-group">
+              <label id="Modal-petName" for="price"><span class="glyphicon glyphicon-user"></span> 구매하시겠습니까? </label>
+            </div>
+            <input type="button" id='btn-buy' data-name='-1' class="btn btn-default btn-outline-danger pull-left" onclick='App.handleBuyBtnInModal()' value="예">
+            <button class="btn btn-default btn-outline-primary pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-off"></span>아니오</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-default btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div> 
+</div>
+  
+  <script>
+     window.addEventListener("load", async function () {
+    const walletFromSession = sessionStorage.getItem('walletInstance');
+      console.log(walletFromSession);
+      //로그인 상태면 케이버 지갑에 계정 추가
+      //로그인 상태 유아이로 변경
+      var table = $('#pet-table').DataTable({
+      "columnDefs": [ 
+        {
+          "targets" : "detailsBtn",
+          "orderable" : false,
+          "searchable" : false,
+          "className" : "details-control"
+        },
+        {
+          "targets": 'sellBtn',
+          "orderable": false,
+          "render" : function ( data, type, row, meta ) {
+              return '<input type="button" class="btn btn-primary table-btn" value="'+data+"코인"+'" onclick="App.handleBuyBtn(\'' +row[8]+'\')">';
+          }
+        },
+        {
+          "targets" : 'petId',
+          "visible": false,
+          "searchable": false
+        }],
+        "order": [[1, 'asc']],
+    });
+
+    $('#pet-table tbody').on('click', 'td.details-control', async function () {
+      var tr = $(this).closest('tr');
+      var row = table.row( tr );
+
+      if ( row.child.isShown() ) {
+        // This row is already open - close it
+        tr.removeClass('shown');
+        row.child.hide();
+      }
+      else {
+        tr.addClass('shown');
+        App.getDdidsToSseion(row.data()[8], tr);
+      }
+    });
+
+    if(walletFromSession!= null){
+      
+      var j = JSON.parse(walletFromSession);
+      console.log(j.address);
+      $('#keyName').append('<br><p> 내 계정 주소: ' + j.address + '</p>');
+      window.App.getAllPetsOnSale($('#pet-table'));
+      var k = await App.getBalance();
+      $("#myBalance").append('<br><p> 내 소유 코인: ' + k + '</p>');
+    }
+  });
+  </script>
+
+   <script>
+      $('.accordian-body').on('show.bs.collapse', function () {
+      $(this).closest("table")
+      .find(".collapse.in")
+      .not(this)
+      .collapse('toggle')
+  })
+  </script>
+
+  <!-- Custom scripts for all pages-->
+<script>
+  !function(t){"use strict";t("#sidebarToggle, #sidebarToggleTop").on("click",function(o){t("body").toggleClass("sidebar-toggled"),t(".sidebar").toggleClass("toggled"),t(".sidebar").hasClass("toggled")&&t(".sidebar .collapse").collapse("hide")}),t(window).resize(function(){t(window).width()<768&&t(".sidebar .collapse").collapse("hide")}),t("body.fixed-nav .sidebar").on("mousewheel DOMMouseScroll wheel",function(o){if(768<t(window).width()){var e=o.originalEvent,l=e.wheelDelta||-e.detail;this.scrollTop+=30*(l<0?1:-1),o.preventDefault()}}),t(document).on("scroll",function(){100<t(this).scrollTop()?t(".scroll-to-top").fadeIn():t(".scroll-to-top").fadeOut()}),t(document).on("click","a.scroll-to-top",function(o){var e=t(this);t("html, body").stop().animate({scrollTop:t(e.attr("href")).offset().top},1e3,"easeInOutExpo"),o.preventDefault()})}(jQuery);
+</script>
+
+</body>
+
+</html>

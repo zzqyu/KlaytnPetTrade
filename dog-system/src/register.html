@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>SB Admin 2 - Register</title>
+  <script src="index.js"></script>
+
+  <!-- Custom fonts for this template-->
+  <link rel="stylesheet" href="sb-admin-2.min.css"/> 
+        <style>
+          a.disabled {
+          pointer-events: none;
+          cursor: default;
+          }
+        </style>
+
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+</head>
+
+<body class="bg-gradient-primary">
+
+  <div class="container">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+          <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+          <div class="col-lg-7">
+            <div class="p-5">
+              <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">블록체인 회원가입</h1>
+              </div>
+              <form class="user">
+                <div class="form-group">
+                  <input type="file" class="form-control" id="userKeyInput" onchange="App.handleImport()">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control form-control-user" id="input-password" placeholder="Private Key">
+                </div>
+
+                <input type="button" class="btn btn-primary btn-user btn-block" value="Key Check" id="btnKeyCheck" onclick="App.regHandleKeyCheck()" disabled="true">
+              </form>
+              <hr>
+              <form class="user">
+                <div class="form-group">
+                  <input type="email" class="form-control form-control-user" id="bingoId" placeholder="Email Address" disabled="true">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control form-control-user" id="bingoPassword" placeholder="Password" disabled="true">
+                </div>
+                
+                <input type="button" class="btn btn-primary btn-user btn-block" value="Register Account" id="registUserInfo" onclick="App.regCheckBingoAccount()" disabled="true">
+                <hr>
+              </form>
+              <div class="text-center">
+                <a class="small" href="login.html">Already have an account? Login!</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+<script>
+  !function(t){"use strict";t("#sidebarToggle, #sidebarToggleTop").on("click",function(o){t("body").toggleClass("sidebar-toggled"),t(".sidebar").toggleClass("toggled"),t(".sidebar").hasClass("toggled")&&t(".sidebar .collapse").collapse("hide")}),t(window).resize(function(){t(window).width()<768&&t(".sidebar .collapse").collapse("hide")}),t("body.fixed-nav .sidebar").on("mousewheel DOMMouseScroll wheel",function(o){if(768<t(window).width()){var e=o.originalEvent,l=e.wheelDelta||-e.detail;this.scrollTop+=30*(l<0?1:-1),o.preventDefault()}}),t(document).on("scroll",function(){100<t(this).scrollTop()?t(".scroll-to-top").fadeIn():t(".scroll-to-top").fadeOut()}),t(document).on("click","a.scroll-to-top",function(o){var e=t(this);t("html, body").stop().animate({scrollTop:t(e.attr("href")).offset().top},1e3,"easeInOutExpo"),o.preventDefault()})}(jQuery);
+</script>
+
+</body>
+
+</html>
