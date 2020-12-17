@@ -10,7 +10,7 @@
   "dependencies": {
     "caver-js": "0.0.2-y",
     "connect-privkey-to-provider": "^0.0.3",
-    "datatables.net": "^1.10.19",
+    "datatables.net": "^1.10.22",
     "datatables.net-dt": "^1.10.19",
     "file-system": "^2.2.2",
     "fs": "0.0.1-security",
